@@ -1,6 +1,6 @@
 class CreateOauthTables < ActiveRecord::Migration
   def self.up
-    create_table :client_applications do |t|
+    create_table :oauth_client_applications do |t|
       t.string :name
       t.string :url
       t.string :support_url
@@ -11,7 +11,7 @@ class CreateOauthTables < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :client_applications,:key,:unique
+    add_index :oauth_client_applications,:key,:unique
     
     create_table :oauth_tokens do |t|
       t.integer :user_id
@@ -36,7 +36,7 @@ class CreateOauthTables < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :client_applications
+    drop_table :oauth_client_applications
     drop_table :oauth_tokens
     drop_table :oauth_nonces
   end

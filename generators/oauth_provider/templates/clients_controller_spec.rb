@@ -18,13 +18,13 @@ describe OauthClientsController, "index" do
   end
   
   it "should query current_users client applications" do
-    @user.should_receive(:client_applications).and_return(@client_applications)
+    @user.should_receive(:oauth_client_applications).and_return(@client_applications)
     do_get
   end
   
   it "should assign client_applications" do
     do_get
-    assigns[:client_applications].should equal(@client_applications)
+    assigns[:oauth_client_applications].should equal(@client_applications)
   end
   
   it "should render index template" do
@@ -49,7 +49,7 @@ describe OauthClientsController, "show" do
   end
   
   it "should query current_users client applications" do
-    @user.should_receive(:client_applications).and_return(@client_applications)
+    @user.should_receive(:oauth_client_applications).and_return(@client_applications)
     @client_applications.should_receive(:find).with('3').and_return(@client_application)
     do_get
   end
@@ -110,7 +110,7 @@ describe OauthClientsController, "edit" do
   end
   
   it "should query current_users client applications" do
-    @user.should_receive(:client_applications).and_return(@client_applications)
+    @user.should_receive(:oauth_client_applications).and_return(@client_applications)
     @client_applications.should_receive(:find).with('3').and_return(@client_application)
     do_get
   end
@@ -180,7 +180,7 @@ describe OauthClientsController, "destroy" do
   end
     
   it "should query current_users client applications" do
-    @user.should_receive(:client_applications).and_return(@client_applications)
+    @user.should_receive(:oauth_client_applications).and_return(@client_applications)
     @client_applications.should_receive(:find).with('3').and_return(@client_application)
     do_delete
   end
@@ -216,7 +216,7 @@ describe OauthClientsController, "update" do
   end
   
   it "should query current_users client applications" do
-    @user.should_receive(:client_applications).and_return(@client_applications)
+    @user.should_receive(:oauth_client_applications).and_return(@client_applications)
     @client_applications.should_receive(:find).with('1').and_return(@client_application)
     do_valid_update
   end

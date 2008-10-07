@@ -14,7 +14,7 @@ module OAuthControllerSpecHelper
     @client_application=mock_model(ClientApplication)
     @client_applications=[@client_application]
     
-    @user.stub!(:client_applications).and_return(@client_applications)
+    @user.stub!(:oauth_client_applications).and_return(@client_applications)
     @client_applications.stub!(:find).and_return(@client_application)
   end
   

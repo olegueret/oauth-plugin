@@ -48,7 +48,7 @@ You need to add the following to your routes (config/routes.rb)
 
 Add the following lines to your user model:
 
-  has_many :client_applications
+  has_many :oauth_client_applications
   has_many :tokens, :class_name=>"OauthToken",:order=>"authorized_at desc",:include=>[:client_application]
 
 === Migrate database
