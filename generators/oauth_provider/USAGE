@@ -14,6 +14,6 @@ map.test_request '/oauth/test_request',:controller=>'oauth',:action=>'test_reque
 
 include the following in your user.rb
 
-has_many :oauth_client_applications
+has_many :client_applications
 has_many :tokens, :class_name=>"OauthToken",:order=>"authorized_at desc",:include=>[:client_application]
 

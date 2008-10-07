@@ -30,7 +30,7 @@ end
 
 describe ClientApplication do #, :shared=>true do
   include OAuthSpecHelpers
-  fixtures :users,:oauth_client_applications,:oauth_tokens
+  fixtures :users,:client_applications,:oauth_tokens
   before(:each) do
     @application = ClientApplication.create :name=>"Agree2",:url=>"http://agree2.com",:user=>users(:quentin)
     create_consumer
