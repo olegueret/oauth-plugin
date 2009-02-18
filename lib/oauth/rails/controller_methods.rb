@@ -95,21 +95,20 @@ module OAuth
       # Implement this for your own application using app-specific models
       def verify_oauth_signature
         begin
-          valid = ClientApplication.verify_request(request) do |token|
-            self.current_token = ClientApplication.find_token(token)
+          valid = ClientApplication.verify_request(request) do |request|
+            self.current_token = ClientApplication.find_token(request.token)
             logger.info "self=#{self.class.to_s}"
             logger.info "token=#{self.current_token}"
             # return the token secret and the consumer secret
             [(current_token.nil? ? nil : current_token.secret), (current_client_application.nil? ? nil : current_client_application.secret)]
           end
-	  # reset @current_user to clear state for restful_...._authentication
-	  @current_user = nil if (!valid)
+          # reset @current_user to clear state for restful_...._authentication
+          @current_user = nil if (!valid)
           valid
-	rescue
-	  false
+        rescue
+          false
         end
       end
-      
     end
   end
 end
